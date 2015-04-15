@@ -5,7 +5,7 @@ class Melon(object):
         return 5.0
 
     def get_total_price(self, qty = 1):
-        total = qty * self.get_base_price()
+        total = qty * (self.get_base_price() + self.increase_on_base_price)
         if self.imported:
             total = total * 1.5
         if self.shape == "square":
@@ -17,7 +17,8 @@ class WatermelonOrder(Melon):
     color = "green"
     imported = False
     shape = 'natural'
-    seasons = ['Fall', 'Summer'] 
+    seasons = ['Fall', 'Summer']
+    increase_on_base_price = 0
 
     def get_price(self, qty=1):
         """Calculate price, given a number of melons ordered."""
@@ -33,6 +34,7 @@ class CantaloupeOrder(Melon):
     imported = False
     shape = "natural"
     seasons = ["Spring", "Summer"]
+    increase_on_base_price = 0
 
     def get_price(self, qty=1):
         total = super(CantaloupeOrder, self).get_total_price(qty)
@@ -46,7 +48,7 @@ class CasabaOrder(Melon):
     imported = True
     shape = "natural"
     seasons = ["Summer", "Fall", "Winter", "Spring"]
-    base_price = 6.0
+    increase_on_base_price = 1.0
 
     def get_price(self, qty = 1):
         return super(CasabaOrder, self).get_total_price(qty)
@@ -57,6 +59,7 @@ class SharlynOrder(Melon):
     imported = True
     shape = "natural"
     seasons = ["Summer"]
+    increase_on_base_price = 0
 
     def get_price(self, qty=1):
         return super(SharlynOrder, self).get_total_price(qty)
@@ -67,6 +70,7 @@ class SantaClausOrder(Melon):
     imported = True
     shape = "natural"
     seasons = ["Winter", "Spring"]
+    increase_on_base_price = 0
 
     def get_price(self, qty=1):
         return super(SantaClausOrder, self).get_total_price(qty)
@@ -77,6 +81,7 @@ class ChristmasOrder(Melon):
     imported = False
     shape = "natural"
     seasons = ["Winter", "Spring"]
+    increase_on_base_price = 0
 
     def get_price(self, qty=1):
         return super(ChristmasOrder, self).get_total_price(qty)
@@ -87,6 +92,7 @@ class HornedMelonOrder(Melon):
     imported = True
     shape = "natural"
     seasons = ["Summer"]
+    increase_on_base_price = 0
 
     def get_price(self, qty=1):
         return super(HornedMelonOrder, self).get_total_price(qty)
@@ -97,6 +103,7 @@ class XiguaOrder(Melon):
     imported = True
     shape = "square"
     seasons = ["Summer"]
+    increase_on_base_price = 0
 
     def get_price(self, qty=1):
         return super(XiguaOrder, self).get_total_price(qty)
@@ -107,7 +114,7 @@ class OgenOrder(Melon):
     imported = False
     shape = "natural"
     seasons = ["Spring", "Summer"]
-    base_price = 6.0
+    increase_on_base_price = 1.0
 
     def get_price(self, qty=1):
         return super(OgenOrder, self).get_total_price(qty)
